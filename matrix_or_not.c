@@ -1,4 +1,4 @@
-//ÊÇ·ñÎª¾ØÕó
+//æ˜¯å¦ä¸ºçŸ©é˜µ
 # include <stdbool.h>
 # include <stdio.h>
 # include <math.h>
@@ -23,7 +23,7 @@ int main()
     int* pt = &num[0];
 
 
-    size = sizeof(num) / sizeof(num[0]);   //¸ù¾İÊı×éÀàĞÍ×öĞŞ¸Ä,¼ÆËãÊı×éÔªËØµÄÊıÁ¿
+    size = sizeof(num) / sizeof(num[0]);   //æ ¹æ®æ•°ç»„ç±»å‹åšä¿®æ”¹,è®¡ç®—æ•°ç»„å…ƒç´ çš„æ•°é‡
 
     result = identity_matrix(pt, size);
 
@@ -38,26 +38,28 @@ int main()
 
 bool identity_matrix(int* pt, int size)
 {
-    int a = sqrt(size);   //ÇóÆ½·½¸ù
-    int a1 = a;           //ºóÃæµÄforÑ­»·»áÓÃµ½
+    int a = sqrt(size);   //æ±‚å¹³æ–¹æ ¹
+    int a1 = a;           //åé¢çš„forå¾ªç¯ä¼šç”¨åˆ°
 
-    if (a != sqrt(size))   //ÈôÆ½·½¸ù²»ÎªÕûÊı£¬Ôò²»³Éµ¥Î»¾ØÕó
+    if (a != sqrt(size))   //è‹¥å¹³æ–¹æ ¹ä¸ä¸ºæ•´æ•°ï¼Œåˆ™ä¸æˆå•ä½çŸ©é˜µ
         return false;
 
-    if (!pt[0])            //Ê×ÔªËØ²»Îª1£¬Ôò²»Îªµ¥Î»¾ØÕó
+    if (!pt[0])            //é¦–å…ƒç´ ä¸ä¸º1ï¼Œåˆ™ä¸ä¸ºå•ä½çŸ©é˜µ
         return false;
 
-    for (int i = size - 1; i > 0; i = i - (a + 1))   //ÌØ¶¨Î»ÖÃµÄÔªËØ²»Îª1£¬Ôò²»Îª¾ØÕó
+    for (int i = size - 1; i > 0; i = i - (a + 1))   //ç‰¹å®šä½ç½®çš„å…ƒç´ ä¸ä¸º1ï¼Œåˆ™ä¸ä¸ºçŸ©é˜µ
         if (!pt[i])
             return false;
 
     int sum = 0;
-    for (int j = 0; j < size; j++)    //¾ØÕóµÄÃ¿Ò»ĞĞ£¬ÓĞÇÒÖ»ÓĞÒ»¸öÔªËØÎª1
+    for (int j = 0; j < size; j++)    //çŸ©é˜µçš„æ¯ä¸€è¡Œï¼Œæœ‰ä¸”åªæœ‰ä¸€ä¸ªå…ƒç´ ä¸º1
     {
-        sum += pt[j];        if£¨sum > 1)            return false;
-        if ((j + 1) == a)     //ÈôÏàµÈ£¬ÔòËµÃ÷´ËĞĞµÄÔªËØÒÑ¾­¶Á¾¡
+        sum += pt[j];        
+        if(sum > 1)     
+            return false;
+        if ((j + 1) == a)     //è‹¥ç›¸ç­‰ï¼Œåˆ™è¯´æ˜æ­¤è¡Œçš„å…ƒç´ å·²ç»è¯»å°½
         {
-            a += a1;        //sum¹é0£¬ÉèÖÃÏÂÒ»´ÎÔªËØ¶ÁÈ¡·¶Î§          
+            a += a1;        //sumå½’0ï¼Œè®¾ç½®ä¸‹ä¸€æ¬¡å…ƒç´ è¯»å–èŒƒå›´          
             sum = 0;
         }
 
